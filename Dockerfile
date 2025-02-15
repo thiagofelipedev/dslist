@@ -1,5 +1,5 @@
 # Usando a imagem oficial do Maven para compilar o projeto
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 WORKDIR /app
 
 # Copia o código-fonte para o container
@@ -19,7 +19,7 @@ WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 
 # Expõe a porta que a aplicação irá rodar
-EXPOSE 5432
+EXPOSE 8080
 
 # Comando para iniciar a aplicação
 CMD ["java", "-jar", "app.jar"]
